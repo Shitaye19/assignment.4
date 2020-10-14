@@ -49,16 +49,17 @@ kable(head(Theoph))
 **1.1 Select columns that contain a lower case"t" in the `Theoph` dataset. Do not mannually list all the columns to include.**
 
 
-```{r}
 
+```{r}
 kable(head(Theoph %>% 
   select(Subject, Wt)))
-
-
 ```
 
+
+
+
 ```{r}
-kable(head(select(Theoph, contains(("t"))))) # this selects the upper case T why?
+kable(head(select(Theoph, contains(('t'))))) # this selects the upper case T why?
 ```
 
 
@@ -81,7 +82,18 @@ kable(head(Theoph %>%
 
 
 
+**1.4 Sort the `Theoph` dataset by `Wt` from smallest to largest and secondarily by Time from largest to smallest**
 
+```{r}
+kable(head(Theoph %>% 
+  arrange(Wt, desc(Time))))
+
+
+```
+
+  
+  
+  
   
   
   
