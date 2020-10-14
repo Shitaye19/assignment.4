@@ -153,3 +153,22 @@ kable(head(Theoph %>%
 | 5       | 54.6 | 5.86 |  7.02 | 7.09 |
 | 5       | 54.6 | 5.86 |  5.02 | 7.56 |
 | 5       | 54.6 | 5.86 |  3.50 | 8.74 |
+
+**1.5 Create a new column called `Quantity`that equals to`Wt` x `Dose`
+in the `Theoph` dataset. This will tell you the absolute quantity of
+drug administered to the subject (in mg). Replace the `Dose` Variable**
+
+``` r
+kable(head(Theoph %>% 
+  mutate(Quantity=Wt*Dose) %>% 
+  select(Subject,Quantity,Time, conc)))
+```
+
+| Subject | Quantity | Time |  conc |
+| :------ | -------: | ---: | ----: |
+| 1       |  319.992 | 0.00 |  0.74 |
+| 1       |  319.992 | 0.25 |  2.84 |
+| 1       |  319.992 | 0.57 |  6.57 |
+| 1       |  319.992 | 1.12 | 10.50 |
+| 1       |  319.992 | 2.02 |  9.66 |
+| 1       |  319.992 | 3.82 |  8.58 |
