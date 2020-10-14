@@ -72,6 +72,13 @@ select(everything(), Weight = Wt, Concentration =conc)))
 ```
 
 
+**Extract the `Dose` greater than 4.5 and `Time` greater than the mean `Time`.**
+
+```{r}
+kable(head(Theoph %>% 
+  filter(Dose > 4.5, Time > mean(Time))))
+```
+
 
 
 
