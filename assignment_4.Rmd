@@ -28,11 +28,38 @@ knitr::opts_chunk$set(echo = TRUE)
   
 First, load all the required packages with the following code. Install them if they are not installed yet.
   
+```{r, message=FALSE}
+library(tidyverse)
+library(knitr)
+library(gapminder) #
+```
 
   
+**Exercise 1. Theopylline experiment** 
   
-  
-  
+This excercise uses the `Theoph` data frame (comes with your R installation), which has 132 rows and 5 columns of data from an experiment on the pharmacokinetics of the anti-asthmatic drug theophylline. Tweleve subjects were given oral doses of theophylline then serum concentrations were measured at 11 time points over the next 25 hours. You can learn more about this dataset by running `?Theoph` 
+
+Have a look at the data structure
+
+```{r}
+kable(head(Theoph))
+```
+
+
+**1.1 Select columns that contain a lower case"t" in the `Theoph` dataset. Do not mannually list all the columns to include.**
+
+```{r}
+
+#select(Theoph, contains(("t"))) # this selects the upper case T why?
+kable(head(Theoph %>% 
+  select(Subject, Wt)))
+
+
+```
+
+
+
+
   
   
   

@@ -42,3 +42,11 @@ ggplot
 
 First, load all the required packages with the following code. Install
 them if they are not installed yet.
+
+``` r
+library(tidyverse)
+library(knitr)
+library(gapminder) #
+```
+
+**Exercise 1. Theopylline experiment**
