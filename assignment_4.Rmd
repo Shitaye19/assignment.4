@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##**Instructions: Please read through this before you begin**
+**Instructions: Please read through this before you begin**
 
 * This assignment is due by **10pm on Monday 10/19/20**.
 
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 First, load all the required packages with the following code. Install them if they are not installed yet.
   
-  
+
   
   
   

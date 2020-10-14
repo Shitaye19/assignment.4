@@ -1,0 +1,44 @@
+Assignment 4: Data transformation with dplyr and visualization with
+ggplot
+================
+
+**Instructions: Please read through this before you begin**
+
+  - This assignment is due by **10pm on Monday 10/19/20**.
+
+  - For this assignment, please **reproduce this markdown file** using R
+    markdown. This includes the followings:
+    
+      - **Reproduce this markdown template.** Pay attention to all the
+        formatin gin this file, including bullet points, bolded
+        characters, inserted code chunks, headings, text colors, blank
+        lines, etc.
+    
+      - **Transform the data as instructed.** Try to use `tidyverse`
+        functions even if you are more comfortable with base-R
+        solutions.Show **the first 6** lines of the transformed data in
+        a table through RMarkdown **using the kable() function**, as
+        shown in this markdown file.
+    
+      - **Reproduce the plots exactly as shown in this html file.** In
+        two cases where the plot is not shown (Excercises 3.7 and 3.9),
+        generate plots that you think can best answer the question.
+    
+      - Have all your code embedded within the R markdown file, and show
+        **BOTH yourcode and plots** in the knitted markdown file
+    
+      - When a verbal response is needed, answer by editing the part in
+        the R markdwon template where it says “Write your response
+        here”.
+    
+      - Use R Markdwon functionalities to **hide messages and warnings
+        when needed**. (Suggestion: messages and warnings can often be
+        informative and important, so please examine them carefully and
+        only turn them off when you finish the exercise).
+
+  - Please name your R markdown file `assignment_4.Rmd` and the knitted
+    markdown file `assignmrent_4.md`. Plese push both files to your
+    class GitHub repository.
+
+First, load all the required packages with the following code. Install
+them if they are not installed yet.
