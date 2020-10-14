@@ -48,14 +48,29 @@ kable(head(Theoph))
 
 **1.1 Select columns that contain a lower case"t" in the `Theoph` dataset. Do not mannually list all the columns to include.**
 
+
 ```{r}
 
-#select(Theoph, contains(("t"))) # this selects the upper case T why?
 kable(head(Theoph %>% 
   select(Subject, Wt)))
 
 
 ```
+
+```{r}
+kable(head(select(Theoph, contains(("t"))))) # this selects the upper case T why?
+```
+
+
+
+**Rename the `Wt` column to `Weight` and `conc` column to `Concentration` in the `Theoph` dataset.**
+
+```{r}
+kable(head(Theoph %>% 
+select(everything(), Weight = Wt, Concentration =conc)))
+
+```
+
 
 
 
