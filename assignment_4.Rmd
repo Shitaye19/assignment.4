@@ -149,26 +149,19 @@ region_updated<-housing %>%
   region_updated %>% 
     filter(State=="DC") %>% 
     head() %>% 
-    kable()
+    kable() 
+    
 
 ```
   
   
-  
-  
-  
-  
-
-```{r}
-updated_housing <- select(South_Dc,region,State, Land.Value,Date)
-dim(updated_housing)
-```
-  
  
 ```{r}
-kable(head(updated_housing,6))
+DC<- region_updated %>% 
+     filter(State=="DC") 
+     dim(DC) #or nrow(DC)
 ```
- 
+  
 Answer:Write your response here. 
  
 The number of records are 153
@@ -178,9 +171,11 @@ The number of records are 153
 
 ```{r}
 
-kable(head(housing %>% 
+ region_updated %>% 
   group_by(region,Date) %>% 
-summarize (mean_land_value = mean(Land.Value))))
+  summarize (mean_land_value = mean(Land.Value)) %>% 
+  head() %>% 
+  kable ()
 
 ```
  
