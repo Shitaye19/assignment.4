@@ -45,7 +45,6 @@ Have a look at the data structure
 kable(head(Theoph))
 ```
 
-
 **1.1 Select columns that contain a lower case"t" in the `Theoph` dataset. Do not mannually list all the columns to include.**
 
 
