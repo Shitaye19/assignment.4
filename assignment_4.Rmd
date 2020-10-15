@@ -216,6 +216,15 @@ geom_smooth()
 ```
 
  
+**3.3 Show each continent in a different color, and fit a separate smoothing line to each continent to identify differences in this relationship between continents. Turn off the confidence intervals.**
+
+
+```{r,echo = FALSE, message=FALSE}
+Scatter_pl + 
+ geom_point(aes(color = continent))+
+  geom_smooth(aes(color = continent), se = FALSE) 
+
+```
  
  
  
@@ -223,7 +232,7 @@ geom_smooth()
  
  
  
- 
+
  
  
  
