@@ -228,7 +228,15 @@ Scatter_pl +
  
  
  
- 
+**Use faceting to solve the problem. Show the confidence intervals in this plot**
+
+```{r, echo FALSE, message = FALSE}
+Scatter_pl + 
+ geom_point(aes(color = continent))+
+  geom_smooth(aes(color = continent))+
+  facet_wrap(~continent)
+```
+
  
  
  
