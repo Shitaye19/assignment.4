@@ -238,7 +238,31 @@ Scatter_pl +
 ```
 
  
- 
+**3.5 Explore the trend in life expectancy through time in each continent. Color by continent.**
+
+```{r}
+line_plotLexp<-gapminder %>% 
+  ggplot(mapping= aes(x = year, y = lifeExp))+
+  geom_line(aes(color = continent))+
+  facet_wrap(~continent)
+line_plotLexp
+
+```
+
+
+```{r}
+continent_gr <- gapminder %>% 
+  group_by(continent) %>% 
+line_plotLexp<-continent_gr %>% 
+  ggplot(mapping= aes(x = year, y = lifeExp))+
+  geom_line(aes(color = continent))+
+  facet_wrap(~continent)
+line_plotLexp
+
+
+```
+
+
  
 
  

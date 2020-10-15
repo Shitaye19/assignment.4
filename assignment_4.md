@@ -357,3 +357,21 @@ Scatter_pl
 **3.2 Add a smoothing line to the previous plot.**
 
 ![](assignment_4_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+
+**3.3 Show each continent in a different color, and fit a separate
+smoothing line to each continent to identify differences in this
+relationship between continents. Turn off the confidence intervals.**
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+
+**Use faceting to solve the problem. Show the confidence intervals in
+this plot**
+
+``` r
+Scatter_pl + 
+ geom_point(aes(color = continent))+
+  geom_smooth(aes(color = continent))+
+  facet_wrap(~continent)
+```
+
+![](assignment_4_files/figure-gfm/echo%20FALSE-1.png)<!-- -->
