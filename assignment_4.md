@@ -266,8 +266,6 @@ dim(updated_housing)
 
     ## [1] 153   4
 
-The number of records are 153
-
 ``` r
 kable(head(updated_housing,6))
 ```
@@ -280,3 +278,27 @@ kable(head(updated_housing,6))
 | South  | DC    |     342010 | 2003.75 |
 | South  | DC    |     361999 | 2004.00 |
 | South  | DC    |     382792 | 2004.25 |
+
+Answer:Write your response here.
+
+The number of records are 153
+
+**2.2 Generate a dataframe that summarizes the mean land value of each
+region at each time point.**
+
+``` r
+kable(head(housing %>% 
+  group_by(region,Date) %>% 
+summarize (mean_land_value = mean(Land.Value))))
+```
+
+    ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
+
+| region  |    Date | mean\_land\_value |
+| :------ | ------: | ----------------: |
+| Midwest | 1975.25 |          2452.167 |
+| Midwest | 1975.50 |          2498.917 |
+| Midwest | 1975.75 |          2608.167 |
+| Midwest | 1976.00 |          2780.000 |
+| Midwest | 1976.25 |          2967.333 |
+| Midwest | 1976.50 |          3212.833 |

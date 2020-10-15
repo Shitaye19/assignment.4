@@ -154,12 +154,32 @@ dim(updated_housing)
 ```
   
   
-The number of records are 153
+
  
  
 ```{r}
 kable(head(updated_housing,6))
 ```
+ 
+Answer:Write your response here. 
+ 
+The number of records are 153
+
+**2.2 Generate a dataframe that summarizes the mean land value of each region at each time point.**
+
+
+```{r}
+
+kable(head(housing %>% 
+  group_by(region,Date) %>% 
+summarize (mean_land_value = mean(Land.Value))))
+
+```
+ 
+ 
+ 
+ 
+ 
  
  
  
