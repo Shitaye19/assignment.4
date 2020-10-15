@@ -324,4 +324,36 @@ summarize (mean_land_value = mean(Land.Value)) %>%
 
 ![](assignment_4_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
-**Excercise 3. Life expectancy and GDP per capita 1952-2007**
+**Exercise 3. Life expectancy and GDP per capita 1952-2007**
+
+This exercise uses the `gapminder` dataset from the `gapminder` package.
+It describes the life expectancy `(lifeExp`), GDP per capita
+(’gdpPercap`), and population (`pop\`) of 142 countries from 1952 to
+2007. These countries can be grouped into 5 continents. As a reminder,
+**reproduce the following plots exactly as shown**.
+
+``` r
+kable(head(gapminder))
+```
+
+| country     | continent | year | lifeExp |      pop | gdpPercap |
+| :---------- | :-------- | ---: | ------: | -------: | --------: |
+| Afghanistan | Asia      | 1952 |  28.801 |  8425333 |  779.4453 |
+| Afghanistan | Asia      | 1957 |  30.332 |  9240934 |  820.8530 |
+| Afghanistan | Asia      | 1962 |  31.997 | 10267083 |  853.1007 |
+| Afghanistan | Asia      | 1967 |  34.020 | 11537966 |  836.1971 |
+| Afghanistan | Asia      | 1972 |  36.088 | 13079460 |  739.9811 |
+| Afghanistan | Asia      | 1977 |  38.438 | 14880372 |  786.1134 |
+
+``` r
+Scatter_pl<-gapminder %>% 
+ggplot(mapping =aes(x=gdpPercap, y = lifeExp))+
+  geom_point()
+Scatter_pl
+```
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+
+**3.2 Add a smoothing line to the previous plot.**
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->

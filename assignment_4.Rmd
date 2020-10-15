@@ -199,6 +199,31 @@ kable(head(gapminder))
 ```
 
  
+```{r}
+Scatter_pl<-gapminder %>% 
+ggplot(mapping =aes(x=gdpPercap, y = lifeExp))+
+  geom_point()
+Scatter_pl
+```
+ 
+ 
+ 
+**3.2 Add a smoothing line to the previous plot.**
+
+```{r,echo=FALSE, message = FALSE}
+Scatter_pl + 
+geom_smooth()
+```
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
