@@ -197,3 +197,86 @@ kable(head(Theoph %>%
 | 2       | 4.823636 | 48.40 |
 | 4       | 4.940000 | 48.40 |
 | 8       | 4.271818 | 49.83 |
+
+**Exercise 2. Trend in land value**
+
+This exercise uses a dataset that describes the trend of land value
+(`Land.Value`), among other variables in different states in the US
+1975-2013.The states are grouped into four different regions, under the
+variable `regon`. This dataset was obtained from the Data Science
+Services of Harvard University.
+
+``` r
+housing <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/landdata_states.csv")
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   State = col_character(),
+    ##   region = col_character(),
+    ##   Date = col_double(),
+    ##   Home.Value = col_double(),
+    ##   Structure.Cost = col_double(),
+    ##   Land.Value = col_double(),
+    ##   Land.Share..Pct. = col_double(),
+    ##   Home.Price.Index = col_double(),
+    ##   Land.Price.Index = col_double(),
+    ##   Year = col_double(),
+    ##   Qrtr = col_double()
+    ## )
+
+``` r
+kable(head(housing)) 
+```
+
+| State | region |    Date | Home.Value | Structure.Cost | Land.Value | Land.Share..Pct. | Home.Price.Index | Land.Price.Index | Year | Qrtr |
+| :---- | :----- | ------: | ---------: | -------------: | ---------: | ---------------: | ---------------: | ---------------: | ---: | ---: |
+| AK    | West   | 2010.25 |     224952 |         160599 |      64352 |             28.6 |            1.481 |            1.552 | 2010 |    1 |
+| AK    | West   | 2010.50 |     225511 |         160252 |      65259 |             28.9 |            1.484 |            1.576 | 2010 |    2 |
+| AK    | West   | 2009.75 |     225820 |         163791 |      62029 |             27.5 |            1.486 |            1.494 | 2009 |    3 |
+| AK    | West   | 2010.00 |     224994 |         161787 |      63207 |             28.1 |            1.481 |            1.524 | 2009 |    4 |
+| AK    | West   | 2008.00 |     234590 |         155400 |      79190 |             33.8 |            1.544 |            1.885 | 2007 |    4 |
+| AK    | West   | 2008.25 |     233714 |         157458 |      76256 |             32.6 |            1.538 |            1.817 | 2008 |    1 |
+
+**2.1 Washington DC was not assigned to a region in this dataset.
+According to the United States Census Bureau, however, DC is part of the
+South region. Here:**
+
+  - **Change the region of DC to “South” (Hint: there are multiple ways
+    to do this, but `mutate()` and `ifelse()` might be helpful)**
+
+  - **Save this updated `region` variable toghether with `state`, `Date`
+    and `Land.Value` into a new data frame**
+
+  - **Select the records from DC in this new data frame. How many
+    records are there from DC? Show its first 6 lines.**
+
+<!-- end list -->
+
+``` r
+South_Dc<- housing %>% 
+filter(State == "DC") %>% 
+  mutate(region="South") 
+```
+
+``` r
+updated_housing <- select(South_Dc,region,State, Land.Value,Date)
+dim(updated_housing)
+```
+
+    ## [1] 153   4
+
+The number of records are 153
+
+``` r
+kable(head(updated_housing,6))
+```
+
+| region | State | Land.Value |    Date |
+| :----- | :---- | ---------: | ------: |
+| South  | DC    |     290522 | 2003.00 |
+| South  | DC    |     305673 | 2003.25 |
+| South  | DC    |     323078 | 2003.50 |
+| South  | DC    |     342010 | 2003.75 |
+| South  | DC    |     361999 | 2004.00 |
+| South  | DC    |     382792 | 2004.25 |

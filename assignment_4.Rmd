@@ -115,10 +115,51 @@ kable(head(Theoph %>%
 ```
 
 
+**Exercise 2. Trend in land value**
+
+This exercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables in different states in the US 1975-2013.The states are grouped into four different regions, under the variable `regon`. This dataset was obtained from the Data Science Services of Harvard University.
+
+
+```{r}
+
+housing <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/landdata_states.csv")
+kable(head(housing)) 
+
+```
+
+
+**2.1 Washington DC was not assigned to a region in this dataset. According to the United States Census Bureau, however, DC is part of the South region. Here:**
+
+  * **Change the region of DC to "South" (Hint: there are multiple ways to do this, but `mutate()` and `ifelse()` might be helpful)**
+  
+  * **Save this updated `region` variable toghether with `state`, `Date` and `Land.Value` into a new data frame**
+  
+  * **Select the records from DC in this new data frame. How many records are there from DC? Show its first 6 lines.**
   
   
+```{r}
+South_Dc<- housing %>% 
+filter(State == "DC") %>% 
+  mutate(region="South") 
   
   
+```
+  
+
   
   
+```{r}
+updated_housing <- select(South_Dc,region,State, Land.Value,Date)
+dim(updated_housing)
+```
   
+  
+The number of records are 153
+ 
+ 
+```{r}
+kable(head(updated_housing,6))
+```
+ 
+ 
+ 
