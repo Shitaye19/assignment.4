@@ -58,7 +58,7 @@ kable(head(Theoph %>%
 
 
 ```{r}
-kable(head(select(Theoph, contains(('t'))))) # this selects the upper case T why?
+kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T why?
 ```
 
 
@@ -249,6 +249,15 @@ line_plotLexp
 
 ```
 
+**3.6 From the previous plot, we see some abnormal trends in Asia and Africa, where the life expectancy in some countries sharply dropped at certain time periods. Here, we look into what happened in Asia in mmore detail. First, create a new dataset by filtering only the Asian countries. Show the first 6 lines of this filtered dataset.**
 
+ 
+```{r}
+Asia_only<-gapminder %>% 
+  filter(continent == "Asia") 
+Asia_only %>% 
+  head() %>% 
+  kable
+```
  
  
