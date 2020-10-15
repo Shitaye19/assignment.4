@@ -116,11 +116,6 @@ Theoph %>%
   
 ```
 
-```{r}
-
-```
-
-
 
 
 **Exercise 2. Trend in land value**
@@ -144,18 +139,17 @@ kable(head(housing))
   
   * **Select the records from DC in this new data frame. How many records are there from DC? Show its first 6 lines.**
   
-  
+
 ```{r}
+
 South_Dc<- housing %>% 
 filter(State == "DC") %>% 
-  mutate(region="South") 
-  
+  mutate(region="South")
   
 ```
   
+  
 
-  
-  
 ```{r}
 updated_housing <- select(South_Dc,region,State, Land.Value,Date)
 dim(updated_housing)

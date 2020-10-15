@@ -181,10 +181,12 @@ Show data for the 6 subjects with the smallest sum of `Dose` as below
 pipes to chain together functions. \*\*
 
 ``` r
-kable(head(Theoph %>% 
+Theoph %>% 
   group_by(Subject) %>% 
   summarize(mean(conc),sum(Dose)) %>% 
-  arrange(`sum(Dose)`)))
+  arrange(`sum(Dose)`) %>% 
+  head() %>% 
+  kable
 ```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
@@ -256,7 +258,7 @@ South region. Here:**
 ``` r
 South_Dc<- housing %>% 
 filter(State == "DC") %>% 
-  mutate(region="South") 
+  mutate(region="South")
 ```
 
 ``` r
