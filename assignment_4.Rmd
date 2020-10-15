@@ -107,10 +107,12 @@ kable(head(Theoph %>%
 Show data for the 6 subjects with the smallest sum of `Dose` as below ** Do not define new intermediate objects for this excercise; use pipes to chain together functions. **
 
 ```{r}
-Theoph %>% 
-mutate (mean(conc)= mean(conc), sum(Dose) = sum(Dose))%>%  
- kable(head(arrange(-sum(Dose))))
 
+kable(head(Theoph %>% 
+  group_by(Subject) %>% 
+  summarize(m=mean(conc),total =sum(Dose)) %>% 
+  arrange(total)))
+  
 ```
 
 

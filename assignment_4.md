@@ -172,3 +172,28 @@ kable(head(Theoph %>%
 | 1       |  319.992 | 1.12 | 10.50 |
 | 1       |  319.992 | 2.02 |  9.66 |
 | 1       |  319.992 | 3.82 |  8.58 |
+
+**1.6 Find the mean `conc` and sum of the `Dose` received by each test
+subject.**
+
+Show data for the 6 subjects with the smallest sum of `Dose` as below
+\*\* Do not define new intermediate objects for this excercise; use
+pipes to chain together functions. \*\*
+
+``` r
+kable(head(Theoph %>% 
+  group_by(Subject) %>% 
+  summarize(m=mean(conc),total =sum(Dose)) %>% 
+  arrange(total)))
+```
+
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
+| Subject |        m | total |
+| :------ | -------: | ----: |
+| 9       | 4.893636 | 34.10 |
+| 6       | 3.525454 | 44.00 |
+| 1       | 6.439091 | 44.22 |
+| 2       | 4.823636 | 48.40 |
+| 4       | 4.940000 | 48.40 |
+| 8       | 4.271818 | 49.83 |
