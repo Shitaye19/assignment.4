@@ -256,20 +256,14 @@ South region. Here:**
 <!-- end list -->
 
 ``` r
-South_Dc<- housing %>% 
-filter(State == "DC") %>% 
-  mutate(region="South")
-```
-
-``` r
-updated_housing <- select(South_Dc,region,State, Land.Value,Date)
-dim(updated_housing)
-```
-
-    ## [1] 153   4
-
-``` r
-kable(head(updated_housing,6))
+region_updated<-housing %>% 
+  mutate(region = ifelse(State == "DC", "South", region)) %>% 
+  select(region,State,Land.Value,Date) 
+  
+  region_updated %>% 
+    filter(State=="DC") %>% 
+    head() %>% 
+    kable() 
 ```
 
 | region | State | Land.Value |    Date |
@@ -281,6 +275,14 @@ kable(head(updated_housing,6))
 | South  | DC    |     361999 | 2004.00 |
 | South  | DC    |     382792 | 2004.25 |
 
+``` r
+DC<- region_updated %>% 
+     filter(State=="DC") 
+     dim(DC) #or nrow(DC)
+```
+
+    ## [1] 153   4
+
 Answer:Write your response here.
 
 The number of records are 153
@@ -289,9 +291,11 @@ The number of records are 153
 region at each time point.**
 
 ``` r
-kable(head(housing %>% 
+ region_updated %>% 
   group_by(region,Date) %>% 
-summarize (mean_land_value = mean(Land.Value))))
+  summarize (mean_land_value = mean(Land.Value)) %>% 
+  head() %>% 
+  kable ()
 ```
 
     ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
@@ -309,7 +313,7 @@ summarize (mean_land_value = mean(Land.Value))))
 each region through time.**
 
 ``` r
-housing %>% 
+ region_updated %>% 
     group_by(region,Date) %>% 
 summarize (mean_land_value = mean(Land.Value)) %>% 
   ggplot(mapping=aes(x=Date,y= mean_land_value, color = region))+
@@ -318,4 +322,6 @@ summarize (mean_land_value = mean(Land.Value)) %>%
 
     ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+
+**Excercise 3. Life expectancy and GDP per capita 1952-2007**

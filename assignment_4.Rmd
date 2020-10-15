@@ -182,7 +182,7 @@ The number of records are 153
 **2.3 Using the dataframe above, plot the trend in mean land value of each region through time.** 
 
 ```{r}
-housing %>% 
+ region_updated %>% 
     group_by(region,Date) %>% 
 summarize (mean_land_value = mean(Land.Value)) %>% 
   ggplot(mapping=aes(x=Date,y= mean_land_value, color = region))+
@@ -190,7 +190,14 @@ summarize (mean_land_value = mean(Land.Value)) %>%
 
 ```
 
-**Excercise 3. Life expectancy and GDP per capita 1952-2007**
+**Exercise 3. Life expectancy and GDP per capita 1952-2007**
+
+This exercise uses the `gapminder` dataset from the `gapminder` package. It describes the life expectancy `(lifeExp`), GDP per capita ('gdpPercap`), and population (`pop`) of 142 countries from 1952 to 2007. These countries can be grouped into 5 continents. As a reminder, **reproduce the following plots exactly as shown**.
+
+```{r}
+kable(head(gapminder))
+```
+
  
  
  
