@@ -105,14 +105,22 @@ kable(head(Theoph %>%
 
 Show data for the 6 subjects with the smallest sum of `Dose` as below ** Do not define new intermediate objects for this excercise; use pipes to chain together functions. **
 
-```{r}
 
-kable(head(Theoph %>% 
+```{r}
+Theoph %>% 
   group_by(Subject) %>% 
-  summarize(m=mean(conc),total =sum(Dose)) %>% 
-  arrange(total)))
+  summarize(mean(conc),sum(Dose)) %>% 
+  arrange(`sum(Dose)`) %>% 
+  head() %>% 
+  kable
   
 ```
+
+```{r}
+
+```
+
+
 
 
 **Exercise 2. Trend in land value**
@@ -153,9 +161,6 @@ updated_housing <- select(South_Dc,region,State, Land.Value,Date)
 dim(updated_housing)
 ```
   
-  
-
- 
  
 ```{r}
 kable(head(updated_housing,6))
@@ -176,7 +181,18 @@ summarize (mean_land_value = mean(Land.Value))))
 
 ```
  
- 
+**2.3 Using the dataframe above, plot the trend in mean land value of each region through time.** 
+
+```{r}
+housing %>% 
+    group_by(region,Date) %>% 
+summarize (mean_land_value = mean(Land.Value)) %>% 
+  ggplot(mapping=aes(x=Date,y= mean_land_value, color = region))+
+  geom_line()
+
+```
+
+
  
  
  

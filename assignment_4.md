@@ -183,20 +183,20 @@ pipes to chain together functions. \*\*
 ``` r
 kable(head(Theoph %>% 
   group_by(Subject) %>% 
-  summarize(m=mean(conc),total =sum(Dose)) %>% 
-  arrange(total)))
+  summarize(mean(conc),sum(Dose)) %>% 
+  arrange(`sum(Dose)`)))
 ```
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-| Subject |        m | total |
-| :------ | -------: | ----: |
-| 9       | 4.893636 | 34.10 |
-| 6       | 3.525454 | 44.00 |
-| 1       | 6.439091 | 44.22 |
-| 2       | 4.823636 | 48.40 |
-| 4       | 4.940000 | 48.40 |
-| 8       | 4.271818 | 49.83 |
+| Subject | mean(conc) | sum(Dose) |
+| :------ | ---------: | --------: |
+| 9       |   4.893636 |     34.10 |
+| 6       |   3.525454 |     44.00 |
+| 1       |   6.439091 |     44.22 |
+| 2       |   4.823636 |     48.40 |
+| 4       |   4.940000 |     48.40 |
+| 8       |   4.271818 |     49.83 |
 
 **Exercise 2. Trend in land value**
 
@@ -302,3 +302,18 @@ summarize (mean_land_value = mean(Land.Value))))
 | Midwest | 1976.00 |          2780.000 |
 | Midwest | 1976.25 |          2967.333 |
 | Midwest | 1976.50 |          3212.833 |
+
+**2.3 Using the dataframe above, plot the trend in mean land value of
+each region through time.**
+
+``` r
+housing %>% 
+    group_by(region,Date) %>% 
+summarize (mean_land_value = mean(Land.Value)) %>% 
+  ggplot(mapping=aes(x=Date,y= mean_land_value, color = region))+
+  geom_line()
+```
+
+    ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
