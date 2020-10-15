@@ -142,11 +142,20 @@ kable(head(housing))
 
 ```{r}
 
-South_Dc<- housing %>% 
-filter(State == "DC") %>% 
-  mutate(region="South")
+region_updated<-housing %>% 
+  mutate(region = ifelse(State == "DC", "South", region)) %>% 
+  select(region,State,Land.Value,Date) 
   
+  region_updated %>% 
+    filter(State=="DC") %>% 
+    head() %>% 
+    kable()
+
 ```
+  
+  
+  
+  
   
   
 
@@ -186,7 +195,7 @@ summarize (mean_land_value = mean(Land.Value)) %>%
 
 ```
 
-
+**Excercise 3. Life expectancy and GDP per capita 1952-2007**
  
  
  
