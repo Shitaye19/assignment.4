@@ -193,8 +193,6 @@ Theoph %>%
   kable
 ```
 
-    ## `summarise()` ungrouping output (override with `.groups` argument)
-
 | Subject | mean(conc) | sum(Dose) |
 | :------ | ---------: | --------: |
 | 9       |   4.893636 |     34.10 |
@@ -214,24 +212,6 @@ Services of Harvard University.
 
 ``` r
 housing <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/landdata_states.csv")
-```
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   State = col_character(),
-    ##   region = col_character(),
-    ##   Date = col_double(),
-    ##   Home.Value = col_double(),
-    ##   Structure.Cost = col_double(),
-    ##   Land.Value = col_double(),
-    ##   Land.Share..Pct. = col_double(),
-    ##   Home.Price.Index = col_double(),
-    ##   Land.Price.Index = col_double(),
-    ##   Year = col_double(),
-    ##   Qrtr = col_double()
-    ## )
-
-``` r
 kable(head(housing)) 
 ```
 
@@ -302,8 +282,6 @@ region at each time point.**
   kable ()
 ```
 
-    ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
-
 | region  |    Date | mean\_land\_value |
 | :------ | ------: | ----------------: |
 | Midwest | 1975.25 |          2452.167 |
@@ -323,8 +301,6 @@ summarize (mean_land_value = mean(Land.Value)) %>%
   ggplot(mapping=aes(x=Date,y= mean_land_value, color = region))+
   geom_line()
 ```
-
-    ## `summarise()` regrouping output by 'region' (override with `.groups` argument)
 
 ![](assignment_4_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
@@ -360,11 +336,22 @@ Scatter_pl
 
 **3.2 Add a smoothing line to the previous plot.**
 
+``` r
+Scatter_pl + 
+geom_smooth()
+```
+
 ![](assignment_4_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 **3.3 Show each continent in a different color, and fit a separate
 smoothing line to each continent to identify differences in this
 relationship between continents. Turn off the confidence intervals.**
+
+``` r
+Scatter_pl + 
+ geom_point(aes(color = continent))+
+  geom_smooth(aes(color = continent), se = FALSE) 
+```
 
 ![](assignment_4_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
@@ -378,7 +365,7 @@ Scatter_pl +
   facet_wrap(~continent)
 ```
 
-![](assignment_4_files/figure-gfm/echo%20FALSE-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 **3.5 Explore the trend in life expectancy through time in each
 continent. Color by continent.**
@@ -391,7 +378,7 @@ line_plotLexp<-gapminder %>%
 line_plotLexp # Hacky hor for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 **3.6 From the previous plot, we see some abnormal trends in Asia and
 Africa, where the life expectancy in some countries sharply dropped at
@@ -429,7 +416,7 @@ graph_asia<- Asia_only %>%
 graph_asia # Hacky hor for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 Answer: Cambodia and China had drastic drop in life expectancy. The
 reason could be war or epidemic.I am not sure about it.
@@ -445,4 +432,4 @@ percapit_plot<-gapminder %>%
 percapit_plot #hacky hour for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
