@@ -77,21 +77,7 @@ kable(head(Theoph))
 dataset. Do not mannually list all the columns to include.**
 
 ``` r
-kable(head(Theoph %>% 
-  select(Subject, Wt)))
-```
-
-| Subject |   Wt |
-| :------ | ---: |
-| 1       | 79.6 |
-| 1       | 79.6 |
-| 1       | 79.6 |
-| 1       | 79.6 |
-| 1       | 79.6 |
-| 1       | 79.6 |
-
-``` r
- select(Theoph, contains('t',ignore.case = F)) %>%  # Q. this selects the upper case T why?
+ select(Theoph, contains('t',ignore.case = F)) %>%  # to select lower-case letter
   head() %>% 
   kable()
 ```
@@ -104,10 +90,6 @@ kable(head(Theoph %>%
 | 1       | 79.6 |
 | 1       | 79.6 |
 | 1       | 79.6 |
-
-``` r
-             # Hacky hor for this
-```
 
 **Rename the `Wt` column to `Weight` and `conc` column to
 `Concentration` in the `Theoph` dataset.**
@@ -304,7 +286,7 @@ summarize (mean_land_value = mean(Land.Value)) %>%
   geom_line()
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 **Exercise 3. Life expectancy and GDP per capita 1952-2007**
 
@@ -334,7 +316,7 @@ ggplot(mapping =aes(x=gdpPercap, y = lifeExp))+
 Scatter_pl
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 **3.2 Add a smoothing line to the previous plot.**
 
@@ -343,7 +325,7 @@ Scatter_pl +
 geom_smooth()
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 **3.3 Show each continent in a different color, and fit a separate
 smoothing line to each continent to identify differences in this
@@ -355,7 +337,7 @@ Scatter_pl +
   geom_smooth(aes(color = continent), se = FALSE) 
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 **Use faceting to solve the problem. Show the confidence intervals in
 this plot**
@@ -367,7 +349,7 @@ Scatter_pl +
   facet_wrap(~continent)
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 **3.5 Explore the trend in life expectancy through time in each
 continent. Color by continent.**
@@ -380,7 +362,7 @@ line_plotLexp<-gapminder %>%
 line_plotLexp # Hacky hor for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 **3.6 From the previous plot, we see some abnormal trends in Asia and
 Africa, where the life expectancy in some countries sharply dropped at
@@ -418,10 +400,15 @@ graph_asia<- Asia_only %>%
 graph_asia # Hacky hor for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
-Answer: Cambodia and China had drastic drop in life expectancy. The
-reason could be war or epidemic.I am not sure about it.
+Answer: Cambodia and China had drastic drop in life expectancy. In
+Cambodia humanitarian crisis has happened from 1969 to 1993 that caused
+loss of life and displacement. The crises were Civil War frin 1970 to
+1975 and Bombing by US from 1969 to 1973 as a strategy to win the war
+with Vietnam. (Wikipedia). The reason behiand the drastic drop down of
+life expectancy in china around 1965 could be because of the Chinese
+involvement to support Pakistan during the war wit India.
 
 **3.8 Explore the trend in per capit GDP through time in each
 continent.**
@@ -434,4 +421,4 @@ percapit_plot<-gapminder %>%
 percapit_plot #hacky hour for this
 ```
 
-![](assignment_4_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](assignment_4_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
