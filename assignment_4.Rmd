@@ -58,8 +58,10 @@ kable(head(Theoph %>%
 
 
 ```{r}
-kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T why?
-# Hacky hor for this
+ select(Theoph, contains(('t'))) %>%  # Q. this selects the upper case T why?
+  head() %>% 
+  kable()
+             # Hacky hor for this
 ```
 
 
