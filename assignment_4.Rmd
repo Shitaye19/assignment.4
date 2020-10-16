@@ -48,20 +48,11 @@ kable(head(Theoph))
 **1.1 Select columns that contain a lower case"t" in the `Theoph` dataset. Do not mannually list all the columns to include.**
 
 
-
 ```{r}
-kable(head(Theoph %>% 
-  select(Subject, Wt)))
-```
-
-
-
-
-```{r}
- select(Theoph, contains('t',ignore.case = F)) %>%  # Q. this selects the upper case T why?
+ select(Theoph, contains('t',ignore.case = F)) %>%  # to select lower-case letter
   head() %>% 
   kable()
-             # Hacky hor for this
+            
 ```
 
 
@@ -279,7 +270,7 @@ graph_asia # Hacky hor for this
 ```
 
  
-Answer: Cambodia and China had drastic drop in life expectancy. The reason could be war or epidemic.I am not sure about it.
+Answer: Cambodia and China had drastic drop in life expectancy. In Cambodia humanitarian crisis has happened from 1969 to 1993 that caused loss of life and displacement. The crises were Civil War frin 1970 to 1975 and Bombing by US from 1969 to 1973 as a strategy to win the war with Vietnam. (Wikipedia). The reason behiand the drastic drop down of life expectancy in china around 1965 could be because of the Chinese involvement to support Pakistan during the war wit India. 
 
 **3.8 Explore the trend in per capit GDP through time in each continent.**
 
