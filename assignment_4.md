@@ -91,7 +91,9 @@ kable(head(Theoph %>%
 | 1       | 79.6 |
 
 ``` r
-kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T why?
+ select(Theoph, contains(('t'))) %>%  # Q. this selects the upper case T why?
+  head() %>% 
+  kable()
 ```
 
 | Subject |   Wt | Time |
@@ -104,7 +106,7 @@ kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T 
 | 1       | 79.6 | 3.82 |
 
 ``` r
-# Hacky hor for this
+             # Hacky hor for this
 ```
 
 **Rename the `Wt` column to `Weight` and `conc` column to
