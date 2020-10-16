@@ -58,7 +58,7 @@ kable(head(Theoph %>%
 
 
 ```{r}
- select(Theoph, contains(('t'))) %>%  # Q. this selects the upper case T why?
+ select(Theoph, contains('t',ignore.case = F)) %>%  # Q. this selects the upper case T why?
   head() %>% 
   kable()
              # Hacky hor for this
@@ -246,7 +246,7 @@ Scatter_pl +
 ```{r}
 line_plotLexp<-gapminder %>% 
   ggplot(mapping= aes(x = year, y = lifeExp))+
-  geom_line(aes(color = continent))+
+  geom_line(aes(color = continent,group = country))+
   facet_wrap(~continent)
 line_plotLexp # Hacky hor for this
 
@@ -270,7 +270,7 @@ Asia_only %>%
 
 graph_asia<- Asia_only %>% 
   ggplot(mapping= aes(x=year, y=lifeExp))+
-  geom_line(aes(color=country))+
+  geom_line(aes(x=year, y=lifeExp, group=country))+
   facet_wrap(~country)
 
 graph_asia # Hacky hor for this
@@ -287,7 +287,7 @@ Answer: Cambodia and China had drastic drop in life expectancy. The reason could
 ```{r}
 percapit_plot<-gapminder %>% 
   ggplot(mapping= aes(x = year, y = gdpPercap))+
-  geom_line(aes(color = continent))+
+  geom_line(aes(color = continent, group = country))+
   facet_wrap(~continent)
 percapit_plot #hacky hour for this
 

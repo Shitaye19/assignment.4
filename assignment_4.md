@@ -91,19 +91,19 @@ kable(head(Theoph %>%
 | 1       | 79.6 |
 
 ``` r
- select(Theoph, contains(('t'))) %>%  # Q. this selects the upper case T why?
+ select(Theoph, contains('t',ignore.case = F)) %>%  # Q. this selects the upper case T why?
   head() %>% 
   kable()
 ```
 
-| Subject |   Wt | Time |
-| :------ | ---: | ---: |
-| 1       | 79.6 | 0.00 |
-| 1       | 79.6 | 0.25 |
-| 1       | 79.6 | 0.57 |
-| 1       | 79.6 | 1.12 |
-| 1       | 79.6 | 2.02 |
-| 1       | 79.6 | 3.82 |
+| Subject |   Wt |
+| :------ | ---: |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
 
 ``` r
              # Hacky hor for this
@@ -375,7 +375,7 @@ continent. Color by continent.**
 ``` r
 line_plotLexp<-gapminder %>% 
   ggplot(mapping= aes(x = year, y = lifeExp))+
-  geom_line(aes(color = continent))+
+  geom_line(aes(color = continent,group = country))+
   facet_wrap(~continent)
 line_plotLexp # Hacky hor for this
 ```
@@ -412,7 +412,7 @@ events possibly explaining these trends. (Hint: facet by country)**
 ``` r
 graph_asia<- Asia_only %>% 
   ggplot(mapping= aes(x=year, y=lifeExp))+
-  geom_line(aes(color=country))+
+  geom_line(aes(x=year, y=lifeExp, group=country))+
   facet_wrap(~country)
 
 graph_asia # Hacky hor for this
@@ -429,7 +429,7 @@ continent.**
 ``` r
 percapit_plot<-gapminder %>% 
   ggplot(mapping= aes(x = year, y = gdpPercap))+
-  geom_line(aes(color = continent))+
+  geom_line(aes(color = continent, group = country))+
   facet_wrap(~continent)
 percapit_plot #hacky hour for this
 ```
