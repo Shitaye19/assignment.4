@@ -49,7 +49,7 @@ kable(head(Theoph))
 
 
 
-```{r}
+```{r, echo FALSE}
 kable(head(Theoph %>% 
   select(Subject, Wt)))
 ```
@@ -57,15 +57,16 @@ kable(head(Theoph %>%
 
 
 
-```{r}
+```{r,echo=FALSE}
 kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T why?
+# Hacky hor for this
 ```
 
 
 
 **Rename the `Wt` column to `Weight` and `conc` column to `Concentration` in the `Theoph` dataset.**
 
-```{r}
+```{r,echo=FALSE}
 kable(head(Theoph %>% 
 select(everything(), Weight = Wt, Concentration =conc)))
 
@@ -74,7 +75,7 @@ select(everything(), Weight = Wt, Concentration =conc)))
 
 **Extract the `Dose` greater than 4.5 and `Time` greater than the mean `Time`.**
 
-```{r}
+```{r, echo=FALSE}
 kable(head(Theoph %>% 
   filter(Dose > 4.5, Time > mean(Time))))
 ```
@@ -83,7 +84,7 @@ kable(head(Theoph %>%
 
 **1.4 Sort the `Theoph` dataset by `Wt` from smallest to largest and secondarily by Time from largest to smallest**
 
-```{r}
+```{r, echo=FALSE}
 kable(head(Theoph %>% 
   arrange(Wt, desc(Time))))
 
@@ -92,7 +93,7 @@ kable(head(Theoph %>%
   
 **1.5 Create a new column called `Quantity`that equals to`Wt` x `Dose` in the `Theoph` dataset. This will tell you the absolute quantity of drug administered to the subject (in mg). Replace the `Dose` Variable**
 
-```{r}
+```{r, echo=FALSE}
 kable(head(Theoph %>% 
   mutate(Quantity=Wt*Dose) %>% 
   select(Subject,Quantity,Time, conc)))
@@ -106,7 +107,7 @@ kable(head(Theoph %>%
 Show data for the 6 subjects with the smallest sum of `Dose` as below ** Do not define new intermediate objects for this excercise; use pipes to chain together functions. **
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 Theoph %>% 
   group_by(Subject) %>% 
   summarize(mean(conc),sum(Dose)) %>% 
@@ -123,7 +124,7 @@ Theoph %>%
 This exercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables in different states in the US 1975-2013.The states are grouped into four different regions, under the variable `regon`. This dataset was obtained from the Data Science Services of Harvard University.
 
 
-```{r}
+```{r,message=FALSE}
 
 housing <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/landdata_states.csv")
 kable(head(housing)) 
@@ -140,7 +141,7 @@ kable(head(housing))
   * **Select the records from DC in this new data frame. How many records are there from DC? Show its first 6 lines.**
   
 
-```{r}
+```{r, echo =FALSE}
 
 region_updated<-housing %>% 
   mutate(region = ifelse(State == "DC", "South", region)) %>% 
@@ -156,7 +157,7 @@ region_updated<-housing %>%
   
   
  
-```{r}
+```{r, echo=FALSE}
 DC<- region_updated %>% 
      filter(State=="DC") 
      dim(DC) #or nrow(DC)
@@ -169,7 +170,7 @@ The number of records are 153
 **2.2 Generate a dataframe that summarizes the mean land value of each region at each time point.**
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 
  region_updated %>% 
   group_by(region,Date) %>% 
@@ -181,7 +182,7 @@ The number of records are 153
  
 **2.3 Using the dataframe above, plot the trend in mean land value of each region through time.** 
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
  region_updated %>% 
     group_by(region,Date) %>% 
 summarize (mean_land_value = mean(Land.Value)) %>% 
@@ -199,7 +200,7 @@ kable(head(gapminder))
 ```
 
  
-```{r}
+```{r, echo=FALSE}
 Scatter_pl<-gapminder %>% 
 ggplot(mapping =aes(x=gdpPercap, y = lifeExp))+
   geom_point()
@@ -240,24 +241,75 @@ Scatter_pl +
  
 **3.5 Explore the trend in life expectancy through time in each continent. Color by continent.**
 
-```{r}
+```{r, echo=FALSE}
 line_plotLexp<-gapminder %>% 
   ggplot(mapping= aes(x = year, y = lifeExp))+
   geom_line(aes(color = continent))+
   facet_wrap(~continent)
-line_plotLexp
+line_plotLexp # Hacky hor for this
 
 ```
 
 **3.6 From the previous plot, we see some abnormal trends in Asia and Africa, where the life expectancy in some countries sharply dropped at certain time periods. Here, we look into what happened in Asia in mmore detail. First, create a new dataset by filtering only the Asian countries. Show the first 6 lines of this filtered dataset.**
 
  
-```{r}
+```{r, echo=FALSE}
 Asia_only<-gapminder %>% 
   filter(continent == "Asia") 
 Asia_only %>% 
   head() %>% 
   kable
 ```
+ 
+ 
+**3.7 Using the filtered dataset, identify the countries that had abnormal trends in life expectancy by plotting, and discuss historical events possibly explaining these trends. (Hint: facet by country)**
+
+```{r,echo=FALSE}
+
+graph_asia<- Asia_only %>% 
+  ggplot(mapping= aes(x=year, y=lifeExp))+
+  geom_line(aes(color=country))+
+  facet_wrap(~country)
+
+graph_asia # Hacky hor for this
+
+
+```
+
+ 
+Answer: Cambodia and China had drastic drop in life expectancy. The reason could be war or epidemic.I am not sure about it.
+
+**3.8 Explore the trend in per capit GDP through time in each continent.**
+
+
+```{r,echo=FALSE}
+percapit_plot<-gapminder %>% 
+  ggplot(mapping= aes(x = year, y = gdpPercap))+
+  geom_line(aes(color = continent))+
+  facet_wrap(~continent)
+percapit_plot #hacky hour for this
+
+```
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  

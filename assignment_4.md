@@ -91,7 +91,7 @@ kable(head(Theoph %>%
 | 1       | 79.6 |
 
 ``` r
-kable(head(select(Theoph, contains(('t'))))) # this selects the upper case T why?
+kable(head(select(Theoph, contains(('t'))))) # Q. this selects the upper case T why?
 ```
 
 | Subject |   Wt | Time |
@@ -102,6 +102,10 @@ kable(head(select(Theoph, contains(('t'))))) # this selects the upper case T why
 | 1       | 79.6 | 1.12 |
 | 1       | 79.6 | 2.02 |
 | 1       | 79.6 | 3.82 |
+
+``` r
+# Hacky hor for this
+```
 
 **Rename the `Wt` column to `Weight` and `conc` column to
 `Concentration` in the `Theoph` dataset.**
@@ -375,3 +379,70 @@ Scatter_pl +
 ```
 
 ![](assignment_4_files/figure-gfm/echo%20FALSE-1.png)<!-- -->
+
+**3.5 Explore the trend in life expectancy through time in each
+continent. Color by continent.**
+
+``` r
+line_plotLexp<-gapminder %>% 
+  ggplot(mapping= aes(x = year, y = lifeExp))+
+  geom_line(aes(color = continent))+
+  facet_wrap(~continent)
+line_plotLexp # Hacky hor for this
+```
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+
+**3.6 From the previous plot, we see some abnormal trends in Asia and
+Africa, where the life expectancy in some countries sharply dropped at
+certain time periods. Here, we look into what happened in Asia in mmore
+detail. First, create a new dataset by filtering only the Asian
+countries. Show the first 6 lines of this filtered dataset.**
+
+``` r
+Asia_only<-gapminder %>% 
+  filter(continent == "Asia") 
+Asia_only %>% 
+  head() %>% 
+  kable
+```
+
+| country     | continent | year | lifeExp |      pop | gdpPercap |
+| :---------- | :-------- | ---: | ------: | -------: | --------: |
+| Afghanistan | Asia      | 1952 |  28.801 |  8425333 |  779.4453 |
+| Afghanistan | Asia      | 1957 |  30.332 |  9240934 |  820.8530 |
+| Afghanistan | Asia      | 1962 |  31.997 | 10267083 |  853.1007 |
+| Afghanistan | Asia      | 1967 |  34.020 | 11537966 |  836.1971 |
+| Afghanistan | Asia      | 1972 |  36.088 | 13079460 |  739.9811 |
+| Afghanistan | Asia      | 1977 |  38.438 | 14880372 |  786.1134 |
+
+**3.7 Using the filtered dataset, identify the countries that had
+abnormal trends in life expectancy by plotting, and discuss historical
+events possibly explaining these trends. (Hint: facet by country)**
+
+``` r
+graph_asia<- Asia_only %>% 
+  ggplot(mapping= aes(x=year, y=lifeExp))+
+  geom_line(aes(color=country))+
+  facet_wrap(~country)
+
+graph_asia # Hacky hor for this
+```
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+Answer: Cambodia and China had drastic drop in life expectancy. The
+reason could be war or epidemic.I am not sure about it.
+
+**3.8 Explore the trend in per capit GDP through time in each
+continent.**
+
+``` r
+percapit_plot<-gapminder %>% 
+  ggplot(mapping= aes(x = year, y = gdpPercap))+
+  geom_line(aes(color = continent))+
+  facet_wrap(~continent)
+percapit_plot #hacky hour for this
+```
+
+![](assignment_4_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
